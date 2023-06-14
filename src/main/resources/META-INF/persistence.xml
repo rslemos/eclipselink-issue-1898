@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+
+    <persistence-unit name="persistence-unit" transaction-type="RESOURCE_LOCAL">
+        <class>br.eti.rslemos.simplejpa.Detail</class>
+        <class>br.eti.rslemos.simplejpa.Master</class>
+
+        <properties>
+            <!-- Websphere Liberty -->
+            <property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.HSQLPlatform" />
+            <property name="eclipselink.logging.logger" value="DefaultLogger" />
+            <property name="eclipselink.logging.level" value="INFO" />
+            <property name="eclipselink.logging.level.sql" value="FINE"/>
+            <property name="eclipselink.logging.parameters" value="true"/>
+            <property name="eclipselink.logging.timestamp" value="true" />
+
+
+            <property name="eclipselink.jdbc.batch-writing" value="JDBC" />
+            <property name="eclipselink.jdbc.batch-writing.size" value="1000" />
+
+
+            <property name="eclipselink.refresh" value="true" />
+            <property name="eclipselink.query-results-cache" value="false" />
+            <property name="eclipselink.cache.size.default" value="200" />
+            <property name="eclipselink.cache.type.default" value="SOFT" />
+            <property name="eclipselink.cache.expiry.default" value="7200000"/> <!-- duas horas -->
+
+            <!-- Database connection settings -->
+            <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:simplejpa"/>
+            <property name="javax.persistence.jdbc.user" value="none"/>
+            <property name="javax.persistence.jdbc.password" value="none"/>
+            <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbc.JDBCDriver"/>
+        </properties>
+    </persistence-unit>
+</persistence>
